@@ -27,7 +27,7 @@ var viewCars = function () {
 
 	}
 
-	return carContainer;
+	return true;
 
 };
 
