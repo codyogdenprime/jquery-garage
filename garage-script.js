@@ -39,7 +39,7 @@ $(document).ready( function() {
 		// The form submission object
 		var formSubmission = {};
 
-		// For each input in the form
+		// For each input in the form EXCEPT for the submit button
 		$( "#carForm > input:not(#carFormSubmit)" ).each( function () { 
 
 			// Create an attribute from the id
