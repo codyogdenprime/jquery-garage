@@ -5,8 +5,43 @@
 		<title>jQuery Garage</title>
 		<script src="jquery.min.js"></script>
 		<script src="garage-script.js"></script>
+		<style>
+		#myGarage {
+			display: flex;
+			justify-content: center;
+			align-items: stretch;
+		}
+		#myGarage .carContainer {
+			width: 200px;
+			height: 200px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		#myGarage .carText {
+			height: 100%;
+			width: 100%;
+			background-color: #000;
+			opacity: 0;
+			transition: opacity .2s ease-in-out;
+			color: #FFF;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		#myGarage .carContainer:hover > .carText {
+			opacity: .7;
+		}
+		</style>
 	</head>
 	<body>
+		<form id="carForm" onsubmit="event.preventDefault();">
+			<input value="1999" autocomplete="off" placeholder="Year" type="number" id="carYear" />
+			<input value="Chevy" autocomplete="off" placeholder="Make" type="text" id="carMake" />
+			<input value="Silverado" autocomplete="off" placeholder="Model" type="text" id="carModel" />
+			<input value="http://placehold.it/300" autocomplete="off" placeholder="Photo URL" type="text" id="carPhoto" />
+			<input autocomplete="off" type="submit" id="carFormSubmit" value="Submit" />
+		</form>
 		<div id="myGarage"></div>
 	</body>
 </html>
