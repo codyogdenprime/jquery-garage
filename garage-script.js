@@ -13,6 +13,8 @@ var viewCars = function () {
 		var car = garage[i]; // Each car
 
 		var carContainer = $("<div />", { class: "carContainer" }).data("car-index", i );
+
+			console.log( "My Div:", carContainer );
 			carContainer.css( "background-image", "url('" + car.carPhoto + "')").css("background-position", "center center").css("background-size","cover");
 
 		var textContainer = $("<div />" , { class: "carText" });
@@ -23,8 +25,6 @@ var viewCars = function () {
 
 		myGarage.append( carContainer );
 
-		console.log( "loop" );
-
 	}
 
 	return true;
@@ -33,21 +33,26 @@ var viewCars = function () {
 
 $(document).ready( function() {
 
-	$("#carForm").on( "submit", function ( e ) {
+	// 
+	$("#form").on( "submit", function ( e ) {
 		
 		// Serialize the form
 		// The form submission object
 		var formSubmission = {};
 
 		// For each input in the form EXCEPT for the submit button
-		$( "#carForm > input:not(#carFormSubmit)" ).each( function () { 
+		$( "#form > input:not(#carFormSubmit)" ).each( function () { 
 
 			// Create an attribute from the id
 			var attr = $( this ).attr( "id" );
 
+			console.log( "var attr =", attr );
+
 			// Add a key/value pair to the object where the key is the id of the input
 			// and the value is the string of te input
 			formSubmission[ attr ] = this.value;
+
+			console.log( "formSubmission[ " + attr + " ] = " + this.value + ";" );
 
 		});
 
@@ -69,13 +74,15 @@ $(document).ready( function() {
 
 
 		// Clear the form fields
-		$( "#carForm > input:not(#carFormSubmit)" ).each( function () {
+		$( "#form > input:not(#carFormSubmit)" ).each( function () {
 			// Set each input value to empty
 			$( this ).val( "" );
 		} );
 
 		// Push the object into the garage
 		garage.push( formSubmission );
+
+		console.log( "garage:", garage );
 
 		return viewCars();
 
